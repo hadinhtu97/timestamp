@@ -5,6 +5,33 @@ const app = express();
 app.get('/', (req, res) => res.sendFile(__dirname + '/views/index.html'))
 app.use(express.static(__dirname + '/public'));
 
+const convertDate = (date) => {
+    if (date === undefined) {
+        return {
+            unix: new Date().getTime(),
+            utc: new Date()
+        }
+    } else {
+        date = new Date(date);
+        console.log(date);
+        if (date == "Invalid Date") {
+            return {
+                error: "Invalid Date"
+            }
+        } else {
+            return {
+                unix: date.getTime(),
+                utc: new Date()
+            }
+        }
+    }
+
+}
+
+app.get('/api/timestamp/:date?', (req, res) => {
+    res.json(convertDate(req.params.date))
+})
+
 app.listen(port, () => {
     console.log("Application is running in port: " + port);
 })
