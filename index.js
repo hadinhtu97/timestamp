@@ -19,14 +19,13 @@ const convertDate = (date) => {
       }
     }else {
       let dateObj = new Date(date);
-      console.log(new Date("1997-14-10"))
       if (dateObj.toString() == "Invalid Date") {
         return {
           error: "Invalid Date"
         }
       } else {
         return {
-          unix: dateObj.valueOf(),
+          unix: dateObj.getTime(),
           utc: dateObj.toUTCString()
         }
       }
