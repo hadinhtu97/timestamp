@@ -5,7 +5,7 @@ var app = express();
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC 
 var cors = require('cors');
-app.use(cors({optionsSuccessStatus: 200}));  // some legacy browsers choke on 204
+app.use(cors({ optionsSuccessStatus: 200 }));  // some legacy browsers choke on 204
 
 app.use(express.static('public'));
 app.get("/", function (req, res) {
@@ -21,10 +21,10 @@ const convertDate = (date) => {
   } else {
     if (/\d{5,}/.test(date)) {
       return {
-        unix : parseInt(date),
+        unix: parseInt(date),
         utc: new Date(parseInt(date)).toUTCString()
       }
-    }else {
+    } else {
       let dateObj = new Date(date);
       if (dateObj.toString() == "Invalid Date") {
         return {
