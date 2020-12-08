@@ -14,10 +14,10 @@ const convertDate = (date) => {
   } else {
     if (/\d{5,}/.test(date)) {
       return {
-        unix : date,
+        unix: date,
         utc: new Date(parseInt(date)).toUTCString()
       }
-    }else {
+    } else {
       let dateObj = new Date(date);
       if (dateObj.toString() == "Invalid Date") {
         return {
